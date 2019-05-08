@@ -43,7 +43,7 @@ class PostController extends Controller
     public function store (Request $request, Topic $topic)
     {
         $validateData = $request->validate([
-            'post' => 'required|unique:posts'
+            'body' => 'required|unique:posts'
         ]);
         $post = new Post();
         $post->topic_id = $topic->id;

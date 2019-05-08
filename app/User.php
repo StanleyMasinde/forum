@@ -30,7 +30,7 @@ class User extends Authenticatable
 
     /**
      * a user is identified by the name
-     * 
+     *
      */
     public function getRouteKeyName()
     {
@@ -39,7 +39,7 @@ class User extends Authenticatable
 
     /**
      * Each user can have many topics
-     * 
+     *
      */
     public function topics()
     {
@@ -48,7 +48,7 @@ class User extends Authenticatable
 
     /**
      * Each user can have many topics
-     * 
+     *
      */
     public function posts()
     {
@@ -57,8 +57,8 @@ class User extends Authenticatable
 
     /**
      * Each user has can have many reports
-     * 
-     * 
+     *
+     *
      */
     public function reports()
     {
@@ -67,8 +67,8 @@ class User extends Authenticatable
 
     /**
      * A user can receive many messages
-     * 
-     * 
+     *
+     *
      */
     public function receivedMessages()
     {
@@ -77,8 +77,8 @@ class User extends Authenticatable
 
     /**
      * A user can send many messages
-     * 
-     * 
+     *
+     *
      */
     public function sentMessages()
     {
@@ -87,8 +87,8 @@ class User extends Authenticatable
 
     /**
      * Check if the user is a moderator
-     * 
-     * 
+     *
+     *
      */
     public function isModerator()
     {
@@ -97,7 +97,7 @@ class User extends Authenticatable
 
     /**
      * Check if user is an admin
-     * 
+     *
      */
     public function isAdmin()
     {
@@ -106,8 +106,8 @@ class User extends Authenticatable
 
     /**
      * Check if user is elevated
-     * 
-     * 
+     *
+     *
      */
     public function isElevated()
     {
@@ -116,8 +116,8 @@ class User extends Authenticatable
 
     /**
      * Get the user's role
-     * 
-     * 
+     *
+     *
      */
     public function role()
     {
@@ -126,8 +126,8 @@ class User extends Authenticatable
 
     /**
      * Each user can have many subscriptions
-     * 
-     * 
+     *
+     *
      */
     public function subscriptions()
     {
