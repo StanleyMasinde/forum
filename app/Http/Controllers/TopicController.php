@@ -14,6 +14,7 @@ use App\Events\UsersMentioned;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\CreateTopicFormRequest;
+use Illuminate\Support\Str;
 
 class TopicController extends Controller
 {
@@ -26,7 +27,6 @@ class TopicController extends Controller
     {
         $topics = Topic::orderBy('created_at', 'desc')->paginate(10);
         return view('forum.topics.index', ['topics' => $topics]);
-        
     }
 
     /**
@@ -47,13 +47,13 @@ class TopicController extends Controller
      */
     public function store(Request $request)
     {
-        $validateData = $request->validate([
+        $request->validate([
             'title' => 'required|unique:topics',
             'post' => 'required',
         ]);
 
         $topic = new Topic;
-        $topic->slug = str_slug(mb_strimwidth($request->title, 0, 255), '-');
+        $topic->slug = Str::slug(mb_strimwidth($request->title, 0, 255), '-');
         $topic->user_id = $request->user()->id;
         $topic->title = $request->title;
         $topic->save();
@@ -97,7 +97,7 @@ class TopicController extends Controller
      */
     public function show(Topic $topic)
     {
-        $topic = $topic->load(['posts'=> function($query){
+        $topic = $topic->load(['posts' => function ($query) {
             $query->orderBy('created_at', 'desc')->get();
         }]);
         return view('forum.topics.topic.index', ['topic' => $topic]);
@@ -132,7 +132,7 @@ class TopicController extends Controller
      * @param  \App\Topic  $topic
      * @return \Illuminate\Http\Response
      */
-    public function destroy (Request $request, Topic $topic)
+    public function destroy(Request $request, Topic $topic)
     {
         // don't need to use policy here, as auth.elevated middleware is being use for the route associated with this controller method invocation
         // we don't allow users to delete a Topic, not even their own, unless they have an elevated User role.

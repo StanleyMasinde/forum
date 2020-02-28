@@ -15,7 +15,7 @@ class GetMentionedUsers
      * @param  string $data
      * @return Illuminate\Support\Collection
      */
-    public static function handle (string $data)
+    public static function handle(string $data)
     {
         $matches = [];
         $mentioned_users = new Collection();
@@ -39,7 +39,6 @@ class GetMentionedUsers
             });
         }
 
-        return $mentioned_users;
+        return collect($mentioned_users);
     }
-
 }
