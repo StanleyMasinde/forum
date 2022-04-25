@@ -19,7 +19,7 @@
     },
     "dependencies": {
         "@ckeditor/ckeditor5-build-classic": "^11.2.0",
-        "axios": "^0.21.1",
+        "axios": "^0.21.2",
         "bootstrap": "^4.4.1",
         "jquery": "^3.5.0",
         "lodash": "^4.17.21",
